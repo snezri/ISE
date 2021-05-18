@@ -1,4 +1,4 @@
-package unittests;
+package unittests.primitives;
 
 import Primitives.Vector;
 import org.junit.Test;

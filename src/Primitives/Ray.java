@@ -1,22 +1,24 @@
 package Primitives;
 
 
+import java.util.List;
+
 import static Primitives.Util.isZero;
 
 public class Ray {
     Point3D p0;
     Vector dir;
 
-    public Ray(Point3D p, Vector v){
-        this.p0=p;
-        this.dir=v.normalized();
+    public Ray(Point3D p, Vector v) {
+        this.p0 = p;
+        this.dir = v.normalized();
     }
 
-    public Point3D getPoint3D(){
+    public Point3D getPoint3D() {
         return p0;
     }
 
-    public Vector getDir(){
+    public Vector getDir() {
         return dir;
     }
 
@@ -37,11 +39,36 @@ public class Ray {
                 '}';
     }
 
-    public Point3D getPoint(double delta ){
-        if (isZero(delta)){
-            return  p0;
+    public Point3D getPoint(double delta) {
+        if (isZero(delta)) {
+            return p0;
         }
         return p0.add(dir.scale(delta));
     }
 
+
+    /**
+     * find the closest Point to Ray origin
+     *
+     * @param pointsList intersections point List
+     * @return closest point
+     */
+    public Point3D findClosestPoint(List<Point3D> pointsList) {
+        Point3D result = null;
+        double closestDistance = Double.MAX_VALUE;
+
+        if (pointsList == null) {
+            return null;
+        }
+
+        for (Point3D p : pointsList) {
+            double temp = p.distance(p0);
+            if (temp < closestDistance) {
+                closestDistance = temp;
+                result = p;
+            }
+        }
+
+        return result;
+    }
 }

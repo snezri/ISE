@@ -1,4 +1,4 @@
-package unittests;
+package unittests.geometries;
 
 import Geometries.Sphere;
 import Primitives.Point3D;

@@ -1,4 +1,4 @@
-package unittests;
+package unittests.geometries;
 
 import Geometries.Cylinder;
 import Primitives.Point3D;
